@@ -282,7 +282,18 @@
                     </a>
                 </div>
             </div>
-            <!-- score board -->
+            <div class="point-system">
+                <div class="points">
+                    <?php
+                        echo $player1." Points = ".getPoints(1);
+                    ?>
+                </div>
+                <div class="points">
+                <?php
+                        echo $player2." Points = ".getPoints(2);
+                    ?>
+                </div>         
+            </div>
 
         </div>
         <div class="outer-item rules">

@@ -66,6 +66,21 @@ body {
     font-size: 25px;
 }
 
+.point-system{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 0.3rem;
+
+    justify-items: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 5%;
+    font-size: 20px;
+}
+.points {
+    color : white;
+}
+
 .turn-box {
     margin-left: 42%;
     height: 25px;

@@ -11,7 +11,7 @@ pairnw timh apo cell tou pinaka
  
         /* fetch associative array */
         while ($row = $result->fetch_assoc()) {
-            $c0 = $row["c0"];
+            $test = $row["c0"];
         
         }
      

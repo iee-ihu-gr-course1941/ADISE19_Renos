@@ -1,4 +1,5 @@
 <?php
+
 function makemove($col){
     if($col==0){
         if(getTurn()==0){
@@ -410,9 +411,11 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
     if(!empty($c0) && !empty($c1) && !empty($c2)){
         if($c0=="O" && $c1=="O" && $c2=="O"){
             echo "winner is ".$_SESSION['player2'];
+            setPoint(2);
             $won=True;
         }else if ($c0=="X" && $c1=="X" && $c2=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -422,8 +425,10 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
         if($c3=="O" && $c4=="O" && $c5=="O"){
             echo "winner is ".$_SESSION['player2'];
             $won=True;
+            setPoint(2);
         }else if ($c3=="X" && $c4=="X" && $c5=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -431,9 +436,11 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
     if(!empty($c6) && !empty($c7) && !empty($c8)){
         if($c6=="O" && $c7=="O" && $c8=="O"){
             echo "winner is ".$_SESSION['player2'];
+            setPoint(2);
             $won=True;
         }else if ($c6=="X" && $c7=="X" && $c8=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -442,9 +449,11 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
     if(!empty($c0) && !empty($c3) && !empty($c6)){
         if($c0=="O" && $c3=="O" && $c6=="O"){
             echo "winner is ".$_SESSION['player2'];
+            setPoint(2);
             $won=True;
         }else if ($c0=="X" && $c3=="X" && $c6=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -453,9 +462,11 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
     if(!empty($c1) && !empty($c4) && !empty($c7)){
         if($c1=="O" && $c4=="O" && $c7=="O"){
             echo "winner is ".$_SESSION['player2'];
+            setPoint(2);
             $won=True;
         }else if ($c1=="X" && $c4=="X" && $c7=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -464,9 +475,11 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
     if(!empty($c2) && !empty($c5) && !empty($c8)){
         if($c2=="O" && $c5=="O" && $c8=="O"){
             echo "winner is ".$_SESSION['player2'];
+            setPoint(2);
             $won=True;
         }else if ($c2=="X" && $c5=="X" && $c8=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -475,9 +488,11 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
     if(!empty($c0) && !empty($c4) && !empty($c8)){
         if($c0=="O" && $c4=="O" && $c8=="O"){
             echo "winner is ".$_SESSION['player2'];
+            setPoint(2);
             $won=True;
         }else if ($c0=="X" && $c4=="X" && $c8=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -486,9 +501,11 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
     if(!empty($c2) && !empty($c4) && !empty($c6)){
         if($c2=="O" && $c4=="O" && $c6=="O"){
             echo "winner is ".$_SESSION['player2'];
+            setPoint(2);
             $won=True;
         }else if ($c2=="X" && $c4=="X" && $c6=="X") {
             echo "winner is ".$_SESSION['player1'];
+            setPoint(1);
             $won=True;
         }
     }
@@ -498,5 +515,64 @@ function checkWin($c0,$c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8){
 
 
 }
+
+function getPoints($player){
+    
+    if($player == 1){
+        //
+        $query ="SELECT p1 FROM boardTable" ;
+        $con = mysqli_connect("localhost", "root", "","adise_project");
+        if ($result = $con->query($query)) {
+         /* fetch associative array */
+         while ($row = $result->fetch_assoc()) {
+            $points = $row["p1"];
+            }
+         $result->free();
+        }
+        //
+    }else if ($player == 2){
+        $query ="SELECT p2 FROM boardTable" ;
+        $con = mysqli_connect("localhost", "root", "","adise_project");
+        if ($result = $con->query($query)) {
+         /* fetch associative array */
+         while ($row = $result->fetch_assoc()) {
+            $points = $row["p2"];
+            }
+         $result->free();
+        }
+    }
+    return $points;
+}
+
+function setPoint($player){
+    if($player == 1){
+        $con = mysqli_connect("localhost", "root", "","adise_project");
+        $points = getPoints($player);
+        $sql = "UPDATE `boardTable` SET `p1`= $points+1";
+        if ($con->query($sql) === TRUE) {
+            error_log("Added 1 to p1");
+        } else {
+            echo "Error: " . $sql . "<br>" . $con->error;
+        }
+        
+    }else if($player == 2){
+        $con = mysqli_connect("localhost", "root", "","adise_project");
+        $points = getPoints($player);
+        $sql = "UPDATE `boardTable` SET `p2`= $points + 1";
+        if ($con->query($sql) === TRUE) {
+            error_log("Added 1 to p2");
+            
+        } else {
+            echo "Error: " . $sql . "<br>" . $con->error;
+        }
+        
+       
+    }
+
+}
+
+
+
+
 
 ?>
