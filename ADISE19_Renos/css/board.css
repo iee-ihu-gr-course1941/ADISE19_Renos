@@ -1,0 +1,128 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+     background-color: rgb(41, 41, 41); 
+}
+
+.outer-container {
+    display: grid;
+    grid-template-rows: auto ;
+    grid-template-columns: auto auto;
+    
+    justify-items: center;
+    align-items: center;
+    margin-top: 10%;
+    margin-left: 10%;
+    font-size: 25px;
+   
+    
+
+}
+
+.rules {
+    margin-left: 10%;
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-row-gap: 0.3rem;
+    grid-template-columns: 150px 150px 150px;
+    grid-column-gap: 0.3rem;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 5%;
+    font-size: 25px;
+    
+    
+}
+
+.stat-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 0.3rem;
+    
+    
+    justify-items: center;
+    align-items: center;
+    margin-left: 5%;
+    font-size: 25px;
+    
+    
+}
+.button-container{
+    display: grid;
+    grid-template-columns: 25% 25%;
+    grid-column-gap: 1rem;
+    
+    
+    margin-left: 5%;
+    font-size: 25px;
+}
+
+.turn-box {
+    margin-left: 42%;
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+.inner-box {
+    margin-top: 10%;
+    font-size: 100px;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.box {
+    
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    background: rgb(161, 179, 189);
+    text-align: center; 
+    justify-content: center;
+    
+}
+
+.box:hover {
+    background: #0599dd;
+    cursor: pointer;
+  } 
+
+.rulesHeader {
+    margin-left: 40%;
+}
+
+.exit-btn {
+    background-color: rgb(219, 25, 25);
+    margin-right: 1rem;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.reset-btn {
+    background-color: rgb(24, 184, 3);
+    margin-right: 1rem;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.stat-item {
+    color: white;
+}
+

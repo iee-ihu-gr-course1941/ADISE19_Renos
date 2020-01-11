@@ -1,0 +1,48 @@
+Allagh collumn value se vash 
+UPDATE `boardTable` SET `c*`=''
+
+Allagh olwn twn col se '' 
+UPDATE `boardTable` SET `c0`='',`c1`='',`c2`='',`c3`='',`c4`='',`c5`='',`c6`='',`c7`='',`c8`='' 
+
+pairnw timh apo cell tou pinaka
+ $c0 = "";
+ $query ="SELECT c0 FROM boardTable" ;
+    if ($result = $con->query($query)) {
+ 
+        /* fetch associative array */
+        while ($row = $result->fetch_assoc()) {
+            $test = $row["c0"];
+        
+        }
+     
+        /* free result set */
+        $result->free();
+    }
+
+    winning condition {
+        either of them are all X or O
+        c0,c1,c2 top  x-axis
+        c3,c4,c5 middle x-axis
+        c6,c7,c8 bottom x-axis
+
+        c0,c3,c6 left y-axis
+        c1,c4,c7 middle y-axis
+        c2,c5,c8 right y-axis
+
+        c0,c4,c8 topleft-to-bottomright 
+        c2,c4,c6 bottomleft-to-topright
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
